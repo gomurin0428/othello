@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="js/othello.js"></script>
+    <title>通信オセロ</title>
+</head>
+
+<body>
+<h1 id="title">オセロ</h1>
+<div id="boardWrapper">
+</div>
+<script>
+    
+var array=[];
+for(var i=0;i<8;i++){
+    array[i]=[];
+}
+for(var i=0;i<8;i++){
+    for(var j=0;j<8;j++){
+        array[i][j]="s";
+    }
+}
+
+var board = new Board(array,0);
+board.initDrawBoard();
+board.drawBoard();
+for(let i=0;i<8;i++){
+    for(let j=0;j<8;j++){
+        var canvas = document.getElementById(("mass"+i)+j);
+        canvas.addEventListener("click",function(){board.isClicked(i,j);},false);
+    }
+}
+board.nextTurn()
+</script>
+</body>
+
+</html>
